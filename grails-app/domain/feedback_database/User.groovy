@@ -1,17 +1,50 @@
 package feedback_database
 
-class User {
-    String name
-    String userName
-    String password
+import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
 
+@EqualsAndHashCode(includes='username')
+@ToString(includes='username', includeNames=true, includePackage=false)
+class User implements Serializable {
 
-    static constraints = {
+	private static final long serialVersionUID = 1
 
-        name blank: false
-        userName unique: true , blank: false
-        password blank : false
+	transient springSecurityService
 
-    }
+	String username
+	String password
+	String fullname
+	boolean enabled = true
+	boolean accountExpired
+	boolean accountLocked
+	boolean passwordExpired
 
+	Set<Role> getAuthorities() {
+		UserRole.findAllByUser(this)*.role
+	}
+
+	def beforeInsert() {
+		encodePassword()
+	}
+
+	def beforeUpdate() {
+		if (isDirty('password')) {
+			encodePassword()
+		}
+	}
+
+	protected void encodePassword() {
+		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
+	}
+
+	static transients = ['springSecurityService']
+
+	static constraints = {
+		password blank: false, password: true
+		username blank: false, unique: true
+	}
+
+	static mapping = {
+		password column: '`password`'
+	}
 }
