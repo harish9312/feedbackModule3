@@ -1,5 +1,3 @@
-
-
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'feedback_database.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'feedback_database.UserRole'
@@ -14,7 +12,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/**/js/**',       access: ['permitAll']],
 	[pattern: '/**/css/**',      access: ['permitAll']],
 	[pattern: '/**/images/**',   access: ['permitAll']],
-	[pattern: '/**/favicon.ico', access: ['permitAll']]
+	[pattern: '/**/favicon.ico', access: ['permitAll']],
+	[pattern: '/login/**',		 access: ['ROLE_USER']],
+
 ]
 
 grails.plugin.springsecurity.filterChain.chainMap = [
@@ -26,3 +26,15 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 
+oauth{
+	providers{
+		facebook{
+			api= "org.scribe.builder.api.FacebookApi"
+			key= "145244925952453"
+			secret= "578034cf4c75a1a92448120b415e56ef"
+			successUri= "/login/fbsuccess/"
+			failureUri= "/login/index/"
+			callback=  "http://localhost:8080/oauth/facebook/callback"
+		}
+	}
+}
