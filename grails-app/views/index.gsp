@@ -1,65 +1,82 @@
-<!DOCTYPE html>
 <html>
 	<head>
-    <title>Add New Feedback</title>
+    <title>Welcome To Feedback Database</title>
     <asset:stylesheet src="bootstrap.css"/>
     <asset:stylesheet src="customcss2.css"/>
     <asset:javascript src="angular.min.js"/> 
     <asset:javascript src="jquery.js"/> 
     <asset:javascript src="bootstrap.js"/>	
+
+<style>
+body{
+	padding-top:40px;
+
+}
+h4{
+     text-align:center;
+     font-size:30px;
+     color:#0faaaf;
+     border-radius:30px;
+     font-family:"Times New Roman";
+     box-shadow:0 0 50px #999;
+        border: 2px groove #800dff !important;
+     		
+}
+.mg-responsive{
+     border-radius:30px;
+     font-family:"Times New Roman";
+     box-shadow:0 0 50px #999;
+     border: 2px groove #800dff !important;
+
+}
+.myTable{
+
+	padding-top:100px;
+
+}
+.myDesign{
+	
+     width:100%;
+     border-radius:10px;
+     font-family:"Times New Roman";
+     box-shadow:0 0 50px #6633CC;
+     border: 2px groove #ffff00  !important;
+
+}
+
+
+</style>
+
 </head>
 
 <body  ng-app="feedbackDatabaseApp">
+<div class="container">
+<h4>Welcome To<br>Feedback Database</h4><br><br>
+<fieldset class="myDesign">
 
-<nav class="navbar navbar-default" style="background-color:#330066">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-    <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" style="color:#FFFFFF" font-size="10" href="#">
-Feedback Database</a>
-</div>
-<div id="navbar" class="navbar-collapse collapse">          
-            
-<ul class="nav navbar-nav navbar-right" >
-		<li><g:link controller="feedback" action="index" style="color:#FFFFFF">View Feedback</g:link></li> 
-		<li><g:link controller="addFeedback" action="index" style="color:#FFFFFF">Add Feedback</g:link></li> 
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-
-</div>
-
-<font size="3">
-<g:form  controller="addFeedback" action="saveFeedback">
-<table align="center" width="70%">
-<tr><td>
-<fieldset class="newborder">
-<h2 align="center">Add Your Feedback</h2>
-<br>
-<table  align="center" class="col-lg-11">
-<tr><td>Course Name:</td><td>      <g:textField required="true" class="form-control" name="courseName"/></td></tr>
-<tr><td>Institute Name:</td><td>   <g:textField required="true" class="form-control"  name="instituteName" /></td></tr>
-<tr><td>Trainer Name:</td><td>     <g:textField required="true" class="form-control"  name="trainerName" /></td></tr>
-<tr><td>Course Duration:</td><td>  <g:textField required="true" class="form-control"  name="courseDuration" /></td></tr>
-<tr><td>Total Fees:</td><td>       <g:textField required="true" class="form-control"  name="totalFees" /></td></tr>
-<tr><td>Feedback:  </td><td>       <g:textArea required="true" class="form-control" ng-model="text" ng-trim="false" name="feedback" /><p align="right">{{1000-text.length+" Characters Left"}}</p></td><tr>                   
-<tr><td></td><td><g:submitButton name="login" class="btn btn-lg btn-success btn-block" value="Add Feedback" /></td></tr>
-</div>
-</div>
-</div>
-</fieldset>
-</td></tr>
+<table class="myTable table-responsive"  align="center" border="0px">
+<tr>
+<td>
+<div class="oneInp">
+<g:link controller="feedback" action="index" style="color:#000000"><asset:image class="img-responsive" width="300px" height="300px" src="fb3.png"/></span></g:link>
+</td>
+<td>
+<g:link controller="login" action="index" style="color:#000000"><asset:image class="img-responsive" width="300px" height="200px" src="login.png"/></g:link>
+</td>
+<td>
+<g:link controller="register" action="index" style="color:#000000"><asset:image class="img-responsive" width="300px" height="300px" src="sup.png"/></g:link>
+</td>
+</tr>
+<tr class="myStyle">
+<td>
+View Feedback
+</td>
+<td>
+Login</td>
+<td>
+SignUp
+</td>
+</tr>
 </table>
-</g:form>
-<br><br
-</body>
-<script>
-angular.module("feedbackDatabaseApp",[])
-</script>
-</html>
+</fieldset>
+</div>
