@@ -12,12 +12,13 @@ table {
 td{
 	border-radius: 1px;
 	border:0.6px;
+	 cursor : pointer;
  
 
 }
 
 th {
-    background-color: #663399;
+    background-color: #0000CD;
     color: white;
     text-align: center;
 }

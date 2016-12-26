@@ -12,14 +12,27 @@ fieldset.newborder {
 }
 
 .btn-success,  .btn-success:active, .btn-success:focus {
-    background-color: #8064A2;
-    border-radius: 24px;
+    background-color: #CC33CC;
+    border-radius: 20px;
 
 }
+.btn-success-singup,  .btn-success-singup:active, .btn-success-singup:focus {
+    background-color: #9900CC;
+    border-radius: 20px;
+    color:#FFFFFF;
+}
+
 .btn-success:hover
 {
-    background-color: #9900CC;
-    border-radius: 24px;	
+    background-color: #669900;
+    border-radius: 10px;
+    color:#FFFFFF;
+}
+.btn-success-singup:hover
+{
+    background-color: #669900;
+    border-radius: 10px;
+    color:#FFFFFF;
 }
 
 .form-control:focus {
