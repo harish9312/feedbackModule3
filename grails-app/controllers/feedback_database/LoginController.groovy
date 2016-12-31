@@ -73,7 +73,6 @@ class LoginController {
             }//1st If close
 
             else{
-                def msg ="Please Login First"
                 redirect(controller: 'login' , action: "index" , params:[msg:msg])
 
             }
@@ -87,12 +86,11 @@ class LoginController {
 
     def updateData() {
         username = currentUser
-        println("in update data "+username)
         if(username!=null) {
             feedback = Feedback.findByUserName(username)
             feedback.courseName = params.courseName
             feedback.instituteName = params.instituteName
-            feedback.trainerName = params.trainerName
+             feedback.trainerName = params.trainerName
             feedback.courseDuration = params.courseDuration
             feedback.totalFees = params.totalFees
             feedback.feedback = params.fb
