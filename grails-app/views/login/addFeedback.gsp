@@ -47,29 +47,25 @@ Feedback Database</a>
       </nav>
 
 </div>
-
-<font size="3">
 <g:form controller="register" action="saveFeedback">
-<table align="center" width="70%">
-<tr><td>
-<fieldset class="newborder">
-<h2 align="center">Add Your Feedback</h2>
-<br>
-<table  align="center" class="col-lg-11">
-<p hidden="true">User Name:      <g:textField required="true" class="form-control"  name="userName" value="${loggedUser.username}"/></p>
-<tr><td>Course Name:</td><td>      <g:textField required="true" class="form-control" name="courseName"/></td></tr>
-<tr><td>Institute Name:</td><td>   <g:textField required="true" class="form-control"  name="instituteName" /></td></tr>
-<tr><td>Trainer Name:</td><td>     <g:textField required="true" class="form-control"  name="trainerName" /></td></tr>
-<tr><td>Course Duration:</td><td>  <g:textField required="true" class="form-control"  name="courseDuration" /></td></tr>
-<tr><td>Total Fees:</td><td>       <g:textField required="true" class="form-control"  name="totalFees" /></td></tr>
-<tr><td>Feedback:  </td><td>       <g:textArea id="check" onChange="countCharacters();" required="true"  class="form-control" ng-model="text" maxlength="1000" ng-trim="false" name="feedback" /><p align="right">{{1000-text.length+" Characters Left"}}</p></td><tr>
-<tr><td></td><td><g:submitButton name="login" class="btn btn-lg btn-success btn-block" value="Add Feedback" /></td></tr>
-</div>
-</div>
-</div>
-</fieldset>
-</td></tr>
-</table>
+    <table align="center" width="70%">
+        <tr><td>
+            <fieldset class="newborder">
+                <h2 align="center">Add Your Feedback</h2>
+                             <h4>No Feedback Added Yet..!!</h4>
+                    <table  align="center" class="col-lg-11">
+                        <p hidden="true">User Name:      <g:textField required="true" class="form-control"  name="userName" value="${loggedUser.username}"/></p>
+                        <tr><td>Course Name:</td><td>      <g:textField required="true" class="form-control" name="courseName"/></td></tr>
+                        <tr><td>Institute Name:</td><td>   <g:textField required="true" class="form-control"  name="instituteName" /></td></tr>
+                        <tr><td>Trainer Name:</td><td>     <g:textField required="true" class="form-control"  name="trainerName" /></td></tr>
+                        <tr><td>Course Duration:</td><td>  <g:textField required="true" class="form-control"  name="courseDuration" /></td></tr>
+                        <tr><td>Total Fees:</td><td>       <g:textField required="true" class="form-control"  name="totalFees" /></td></tr>
+                        <tr><td>Feedback:  </td><td>       <g:textArea id="check" onChange="countCharacters();" required="true"  class="form-control" ng-model="text" maxlength="1000" ng-trim="false" name="feedback" /><p align="right">{{1000-text.length+" Characters Left"}}</p></td><tr>
+                        <tr><td></td><td><g:submitButton name="login" class="btn btn-lg btn-success btn-block" value="Add Feedback" /></td></tr>
+                    </table>
+            </fieldset>
+        </td></tr>
+    </table>
 </g:form>
 <br><br
 </body>

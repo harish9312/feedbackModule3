@@ -1,0 +1,37 @@
+body{
+	padding-top:40px;
+
+}
+h4{
+     text-align:center;
+     font-size:30px;
+     color:#0faaaf;
+     border-radius:30px;
+     font-family:"Times New Roman";
+     box-shadow:0 0 50px #999;
+        border: 2px groove #800dff !important;
+
+}
+.mg-responsive{
+     border-radius:30px;
+     font-family:"Times New Roman";
+     box-shadow:0 0 50px #999;
+     border: 2px groove #800dff !important;
+
+}
+.myTable{
+
+	padding-top:100px;
+
+}
+.myDesign{
+
+     width:100%;
+     border-radius:10px;
+     font-family:"Times New Roman";
+     box-shadow:0 0 50px #6633CC;
+     border: 2px groove #ffff00  !important;
+
+}
+
+

@@ -13,7 +13,9 @@ class LoginController {
     def username
 
     def index() {
-                    //view for Login
+        username=null
+        currentUser = null
+
     }
 
     //Action to get the username form Facebook if login is successful
@@ -26,7 +28,7 @@ class LoginController {
         //
         currentUser = data.id
         if(currentUser){
-            redirect(controller: 'login' , action: 'update')
+            redirect(controller: 'login' , action: 'home')
         }
         else
             redirect(controller: 'login' , action: 'index')
@@ -36,9 +38,61 @@ class LoginController {
     def getuser(){
 
         currentUser = springSecurityService.currentUser?.username
-        redirect(controller: 'login' , action: 'update')
+        redirect(controller: 'login' , action: 'home')
 
     }
+
+
+        def home() {
+            username = currentUser
+            feedback = Feedback.findByUserName(username)
+            if (feedback != null) {
+
+                String courseName
+                String instituteName
+                String trainerName
+                String courseDuration
+                String totalFees
+                String fb
+
+                if (username != null) {
+                    feedback = Feedback.findByUserName(username)
+                    if (feedback != null) {
+                        courseName = feedback.courseName
+                        instituteName = feedback.instituteName
+                        trainerName = feedback.trainerName
+                        courseDuration = feedback.courseDuration
+                        totalFees = feedback.totalFees
+                        fb = feedback.feedback
+
+                        def sendData = [
+                                courseName: courseName,
+                                instituteName: instituteName,
+                                trainerName: trainerName,
+                                courseDuration: courseDuration,
+                                totalFees: totalFees,
+                                feedback: fb
+                        ]
+
+                        [sendData: sendData]
+
+
+                    }//2nd If Close
+
+                }//1st If close
+
+                else{
+                    redirect(controller: 'login' , action: "index")
+
+                }
+
+
+            } else {
+                redirect(controller: "login", action: "addFeedback")
+            }
+        }
+
+
 
     def update() {
         username = currentUser
@@ -63,7 +117,14 @@ class LoginController {
                     totalFees = feedback.totalFees
                     fb = feedback.feedback
 
-                    def sendData = [courseName: courseName, instituteName: instituteName, trainerName: trainerName, courseDuration: courseDuration, totalFees: totalFees, feedback: fb]
+                    def sendData = [
+                            courseName: courseName,
+                            instituteName: instituteName,
+                            trainerName: trainerName,
+                            courseDuration: courseDuration,
+                            totalFees: totalFees,
+                            feedback: fb
+                    ]
 
                     [sendData: sendData]
 
@@ -73,7 +134,7 @@ class LoginController {
             }//1st If close
 
             else{
-                redirect(controller: 'login' , action: "index" , params:[msg:msg])
+                redirect(controller: 'login' , action: "index")
 
             }
 
@@ -96,8 +157,7 @@ class LoginController {
             feedback.feedback = params.fb
             if (feedback.save()) {
                 username = null
-                println username
-                redirect(controller: "feedback", action: "index")
+                redirect(controller: "login", action: "home")
             } else {
                 redirect(controller: "login", action: "index")
             }
@@ -129,6 +189,4 @@ class LoginController {
         else
             redirect(action: 'index' , params: [msg:msg])
     }
-
 }//Controller Close
-

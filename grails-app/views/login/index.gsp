@@ -2,13 +2,18 @@
 <html>
 	<head>
     <title>Login To FeedBack Database</title>
+    <asset:stylesheet src="font-awesome/css/font-awesome.css"/>
     <asset:stylesheet src="bootstrap.css"/>
     <asset:stylesheet src="customcss2.css"/>
     <asset:stylesheet src="loginDesign.css"/>
     <asset:javascript src="angular.min.js"/>
     <asset:javascript src="jquery.js"/>
     <asset:javascript src="bootstrap.js"/>
-
+    <style>
+table.ex1{
+border-spacing: 0px;
+}
+    </style>
 </head>
 
 <body  ng-app="feedbackDatabaseApp">
@@ -26,8 +31,7 @@
 Feedback Database</a>
 </div>
 <div id="navbar" class="navbar-collapse collapse">
-
-<ul class="nav navbar-nav navbar-right" >
+    <ul class="nav navbar-nav navbar-right" >
 
     <li><g:link controller="register" action="index" style="color:#FFFFFF">SignUp Here</g:link></li>
 		<li><g:link controller="feedback" action="index" style="color:#FFFFFF">View Feedback</g:link></li>
@@ -44,29 +48,22 @@ Feedback Database</a>
 <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
 
 <table align="center" width="50%">
-<tr><td>
-<fieldset class="newborder">
-<h2 align="center">Login To Feedback Database</h2>
-<br>
-<g:if test="${params.msg!=null}"><div class="getFloat"><p class="myAlert">${params.msg}</p></div></g:if>
-<br>
-<table align="center" width="270px">
-<tr align="center"><td><label>Username</label>
-<g:textField required="true" class="form-control" name="${usernameParameter ?: 'username'}" id="username" placeholder="Enter Your Username" value="${userInstance?.userName}"/></td></tr>
-<tr align="center"><td><label>Password</label>
-<g:field required="true" class="form-control" type="password" name="${passwordParameter ?: 'password'}" id="password" placeholder="Enter Your Password" value="${userInstance?.password}"/>
+    <tr><td>
+        <fieldset class="newborder">
+            <h2 align="center">Login To Feedback Database</h2><br>
+              <g:if test="${params.msg}"><div align="center"><p class="alert alert-danger">${params.msg}</p></div></g:if><br>
+                    <table align="center" border="0">
+                        <tr><td><i class="fa fa-2x fa-user-o" aria-hidden="true"></td><td><g:textField required="false" class="form-control" name="${usernameParameter ?: 'username'}" id="username" placeholder="Enter Your Username" value="${userInstance?.userName}"/></td></tr></i>
+                        <tr><td><i class="fa fa-3x fa-lock" aria-hidden="true"></td><td><g:field required="true" class="form-control" type="password" name="${passwordParameter ?: 'password'}" id="password" placeholder="Enter Your Password" value="${userInstance?.password}"/></td></tr>
+                        <tr><td><td><p><g:submitButton class="btn btn-lg btn-success btn-block" name="login"  value="Login" /><p>
 </td></tr>
-<tr align="center"><td>
-<g:submitButton class="btn btn-lg btn-success btn-block" id="submit" name="login"  value="Login" />
-</td></tr>
-		</form>
+</form>
 </table>
 <h6>OR</h6>
 <oauth:connect provider="facebook" id="facebook-connect-link">
-<button class="loginBtn loginBtn--facebook">
-SignIn With Facebook
-</button></oauth:connect>
-
+<center>
+<asset:image class="img-responsive" width="300px" height="20px" src="fblogin.png"/>
+</oauth:connect>
 </div>
 <center>
 </body>

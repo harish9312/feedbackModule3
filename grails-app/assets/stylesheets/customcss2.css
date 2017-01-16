@@ -1,6 +1,6 @@
 fieldset.newborder {
     border: 3px groove #ddd !important;
-    border-radius: 100px;
+    border-radius: 40px;
     box-shadow:0 0 50px #999;
     padding-top: 50px; 
     padding-bottom: 50px;
@@ -10,7 +10,9 @@ fieldset.newborder {
 {
 	padding-bottom: 100px;
 }
+.alert{
 
+}
 .btn-success,  .btn-success:active, .btn-success:focus {
     background-color: #CC33CC;
     border-radius: 20px;

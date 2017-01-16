@@ -9,7 +9,7 @@ class RegisterController {
     def username
 
     def index() {
-
+        username=null
     }
 
     //to add a new user into the feedback database
@@ -28,8 +28,8 @@ class RegisterController {
             redirect(action: "addFeedback")
         }
         else
-        {
-            redirect(action:"index", params:[msg:msg])
+        {   flash.errmsg="Username already exist"
+            redirect(action:"index")
 
         }
     }
@@ -48,7 +48,7 @@ class RegisterController {
         def saveFB = new Feedback(params)
         if(saveFB.save())
         {   username = null
-            redirect(controller :"feedback" , action: "index")
+            redirect(controller :"login" , action: "getuser")
         }
 
     }

@@ -49,15 +49,13 @@ Feedback Database</a>
       </nav>
 
 </div>
-
-<font size="3">
 <g:form controller="register" action="saveFeedback">
-<table align="center" width="70%">
-<tr><td>
-<fieldset class="newborder">
-<h2 align="center">Add Your Feedback</h2>
-<br>
-<table  align="center" class="col-lg-11">
+    <table align="center" width="70%">
+        <tr><td>
+        <fieldset class="newborder">
+            <h2 align="center">Add Your Feedback</h2><br>
+            <h4 align="center">No feedback added yet...!!</h4>
+                <table  align="center" class="col-lg-11">
 <p hidden="true">User Name:      <g:textField required="true" class="form-control"  name="userName" value="${loggedUser.username}"/></p>
 <tr><td>Course Name:</td><td>      <g:textField required="true" class="form-control" name="courseName"/></td></tr>
 <tr><td>Institute Name:</td><td>   <g:textField required="true" class="form-control"  name="instituteName" /></td></tr>

@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <asset:javascript src="angular.min.js"/> 
+    <title>Feedbacks</title>
+    <asset:javascript src="angular.min.js"/>
     <asset:javascript src="jquery.js"/> 
-<asset:javascript src="bootstrap.js"/>	
-<asset:stylesheet src="customcss1.css"/>
-<asset:stylesheet src="bootstrap.css"/>
-<title>Feedbacks</title>
+    <asset:javascript src="bootstrap.js"/>
+    <asset:stylesheet src="customcss1.css"/>
+    <asset:stylesheet src="bootstrap.css"/>
+<style>
+.myStyle1{
+padding-bottom:10px;
+}
+.myStyle{
+padding-top:10px;
+}
+
+.myHead{
+font-weight:bold;
+margin-left:10px;
+padding-left:10px;
+}
+.myData{
+font-size:15px;
+padding-left:10px;
+padding-right:10px;
+align-content:left;
+}
+.feedbackStyle{
+padding-top:10px;
+padding-left:10px;
+
+}
+</style>
 </head>
 <body>
 <nav class="navbar navbar-default" style="background-color:#0000CD">
@@ -33,34 +58,56 @@ Feedback Database</a>
         </div><!--/.container-fluid -->
       </nav>
 
-<div class="container">
-<table class="newcorners table table-hover table-responsive" align="center">
-<tr class="bg-success" align="center">
-<th>Sr. No</th>
-<th>Course Name</th>
-<th>Institute Name</th>
-<th>Trainer Name</th>
-<th>Duration</th>
-<th>Total Fees</th>
-<th>Feedback</th>
-</tr>
-</thead>
+<div class="container hidden-xs">
+    <table class="newcorners table table-hover table-responsive" align="center">
+        <tr class="bg-success" align="center">
+            <th>Sr. No</th>
+            <th>Course Name</th>
+            <th>Institute Name</th>
+            <th>Trainer Name</th>
+            <th>Duration</th>
+            <th>Total Fees</th>
+            <th>Feedback</th>
+        </tr>
+     </thead>
 <g:each in="${feedbacks}" var="fb" status="i">
-<tbody>
-<tr class="table table-hover">
-<td>${i+1}</td>
-<td>${fb.courseName}</td>
-<td>${fb.instituteName}</td>
-<td>${fb.trainerName}</td>
-<td>${fb.courseDuration}</td>
-<td>${fb.totalFees}</td>
-<td>${fb.feedback}</td>
-</tr>
-</tbody>
+     <tbody>
+        <tr class="table table-hover">
+            <td>${i+1}</td>
+            <td>${fb.courseName}</td>
+            <td>${fb.instituteName}</td>
+            <td>${fb.trainerName}</td>
+            <td>${fb.courseDuration}</td>
+            <td>${fb.totalFees}</td>
+            <td>${fb.feedback}</td>
+        </tr>
+     </tbody>
 </g:each>
-</table>
+    </table>
+</div>
 
+<div class="visible-xs myStyle1">
+<g:each in="${feedbacks}" var="fb" status="i">
+<table  class align="center" width="90%" border="4px">
 
+                           <tr><td class="myHead myStyle">Course Title:</td></tr>
+                            <tr><td class="myData">${fb.courseName}</td></tr>
+                            <tr><td class="myHead">Institute Name:</td></tr>
+                            <tr><td class="myData">${fb.instituteName}</td></tr>
+                            <tr><td class="myHead">Trainer Name:</td></tr>
+                            <tr><td class="myData">${fb.trainerName}</td></tr>
+                            <tr><td class="myHead">Course Duration:</td></tr>
+                            <tr><td class="myData">${fb.courseDuration}</td></tr>
+                            <tr><td class="myHead">Total Fees:</td></tr>
+                            <tr><td class="myData">${fb.totalFees}</td></tr>
+                            <tr><td class="myHead">Feedback:</td></tr>
+                            <tr><td class="myData myStyle1">${fb.feedback}</td></tr>
+ 
+            <br>
+               </div>
+     </table>
+</g:each>
 
+</div>
 </body>
 </html>
