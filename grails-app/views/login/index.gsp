@@ -9,11 +9,6 @@
     <asset:javascript src="angular.min.js"/>
     <asset:javascript src="jquery.js"/>
     <asset:javascript src="bootstrap.js"/>
-    <style>
-table.ex1{
-border-spacing: 0px;
-}
-    </style>
 </head>
 
 <body  ng-app="feedbackDatabaseApp">
@@ -46,25 +41,33 @@ Feedback Database</a>
 			<div class="login_message">${flash.message}</div>
 		</g:if>
 <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
-
 <table align="center" width="50%">
-    <tr><td>
-        <fieldset class="newborder">
-            <h2 align="center">Login To Feedback Database</h2><br>
-              <g:if test="${params.msg}"><div align="center"><p class="alert alert-danger">${params.msg}</p></div></g:if><br>
-                    <table align="center" border="0">
+    <table align="center" width="50%">
+        <tr><td>
+            <fieldset class="newborder">
+                    <h2 align="center">Login To Feedback Database</h2>
+                        <g:if test="${params.msg}"><p class="alert alert-danger">${params.msg}</g:if></p><br>
+                            <table align="center" width="270px">
                         <tr><td><i class="fa fa-2x fa-user-o" aria-hidden="true"></td><td><g:textField required="false" class="form-control" name="${usernameParameter ?: 'username'}" id="username" placeholder="Enter Your Username" value="${userInstance?.userName}"/></td></tr></i>
                         <tr><td><i class="fa fa-3x fa-lock" aria-hidden="true"></td><td><g:field required="true" class="form-control" type="password" name="${passwordParameter ?: 'password'}" id="password" placeholder="Enter Your Password" value="${userInstance?.password}"/></td></tr>
                         <tr><td><td><p><g:submitButton class="btn btn-lg btn-success btn-block" name="login"  value="Login" /><p>
+        </tr></td>
+
 </td></tr>
 </form>
 </table>
+
+
+
+
+
 <h6>OR</h6>
 <oauth:connect provider="facebook" id="facebook-connect-link">
 <center>
 <asset:image class="img-responsive" width="300px" height="20px" src="fblogin.png"/>
 </oauth:connect>
+    </table>
+
 </div>
-<center>
 </body>
 </html>

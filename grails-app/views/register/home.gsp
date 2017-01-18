@@ -8,6 +8,7 @@
     <asset:javascript src="jquery.js"/>
     <asset:javascript src="bootstrap.js"/>
     <asset:javascript src="validation.js"/>
+
 </head>
 
 <body  ng-app="feedbackDatabaseApp">
@@ -30,7 +31,7 @@
 <div id="navbar" class="navbar-collapse collapse">
 
 <ul class="nav navbar-nav navbar-right" >
-		<li><g:link controller="login" action="deleteFeedback" onclick="return confirmDelete()" style="color:#FFFFFF">Delete Your Feedback</g:link></li>
+		<li><g:link controller="register" action="deleteFeedback" onclick="return confirmDelete()" style="color:#FFFFFF">Delete Your Feedback</g:link></li>
 		<li><g:link method="POST" controller="logout" action="index" style="color:#FFFFFF">Logout</g:link></li>
 
             </ul>
@@ -74,7 +75,7 @@
                   </div>
             </fieldset>
         </td></tr>
-        <tr><td><g:link method="POST" controller="login" action="update" style="color:#00000"><button type="button" class="btn btn-lg btn-success">Edit Your Feedback</button></g:link>
+        <tr><td><g:link method="POST" controller="register" action="editfeedback" style="color:#00000"><button type="button" class="btn btn-lg btn-success">Edit Your Feedback</button></g:link>
 </td></tr>
     </table>
 </div>

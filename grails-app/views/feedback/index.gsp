@@ -7,31 +7,6 @@
     <asset:javascript src="bootstrap.js"/>
     <asset:stylesheet src="customcss1.css"/>
     <asset:stylesheet src="bootstrap.css"/>
-<style>
-.myStyle1{
-padding-bottom:10px;
-}
-.myStyle{
-padding-top:10px;
-}
-
-.myHead{
-font-weight:bold;
-margin-left:10px;
-padding-left:10px;
-}
-.myData{
-font-size:15px;
-padding-left:10px;
-padding-right:10px;
-align-content:left;
-}
-.feedbackStyle{
-padding-top:10px;
-padding-left:10px;
-
-}
-</style>
 </head>
 <body>
 <nav class="navbar navbar-default" style="background-color:#0000CD">
@@ -73,8 +48,8 @@ Feedback Database</a>
 <g:each in="${feedbacks}" var="fb" status="i">
      <tbody>
         <tr class="table table-hover">
-            <td>${i+1}</td>
-            <td>${fb.courseName}</td>
+            <td>${fb.id}</td>
+            <td style="font-family:'Comic Sans MS';font-weight:italic;">${fb.courseName}</td>
             <td>${fb.instituteName}</td>
             <td>${fb.trainerName}</td>
             <td>${fb.courseDuration}</td>

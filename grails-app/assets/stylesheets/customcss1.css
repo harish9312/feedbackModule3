@@ -35,3 +35,29 @@ th {
 }	
 
 
+.myStyle1{
+    padding-bottom:10px;
+}
+.myStyle{
+    padding-top:10px;
+}
+
+.myHead{
+    font-weight:bold;
+    margin-left:10px;
+    padding-left:10px;
+}
+.myData{
+    font-size:15px;
+    padding-left:10px;
+    padding-right:10px;
+    align-content:left;
+}
+.feedbackStyle{
+    padding-top:10px;
+    padding-left:10px;
+}
+.myCourse{
+    align-content:center;
+
+}

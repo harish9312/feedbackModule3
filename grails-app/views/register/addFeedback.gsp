@@ -5,21 +5,10 @@
     <asset:stylesheet src="bootstrap.css"/>
     <asset:stylesheet src="customcss2.css"/>
     <asset:javascript src="angular.min.js"/> 
-    <asset:javascript src="jquery.js"/> 
+    <asset:javascript src="validation.js"/>
+    <asset:javascript src="jquery.js"/>
     <asset:javascript src="bootstrap.js"/>
 <g:javascript>
-
-    function countCharacters(){
-        var len = document.getElementById('check').value.length;
-           if( len>=1000){
-           alert("Sorry..!!\nCharacter Limit Over");
-           return false;
-           }
-    }
-
-    $(document).ready(function () {
-                     $("#check").keyup(countCharacters);
-                  });
 </g:javascript>
 
 </head>
@@ -62,7 +51,7 @@ Feedback Database</a>
 <tr><td>Trainer Name:</td><td>     <g:textField required="true" class="form-control"  name="trainerName" /></td></tr>
 <tr><td>Course Duration:</td><td>  <g:textField required="true" class="form-control"  name="courseDuration" /></td></tr>
 <tr><td>Total Fees:</td><td>       <g:textField required="true" class="form-control"  name="totalFees" /></td></tr>
-<tr><td>Feedback:  </td><td>       <g:textArea id="check" onChange="countCharacters();"required="true" class="form-control" ng-model="text" ng-trim="false" maxlength="1000" name="feedback" /><p align="right">{{1000-text.length+" Characters Left"}}</p></td><tr>
+<tr><td>Feedback:  </td><td>       <g:textArea id="check" onChange="countCharacter();"required="true" class="form-control" ng-model="text" ng-trim="false" maxlength="1000" name="feedback" /><p align="right">{{1000-text.length+" Characters Left"}}</p></td><tr>
 <tr><td></td><td><g:submitButton name="login" class="btn btn-lg btn-success-singup btn-block" value="Add Feedback" /></td></tr>
 </div>
 </div>

@@ -1,4 +1,8 @@
 // Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'feedback_database.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'feedback_database.UserRole'
+grails.plugin.springsecurity.authority.className = 'feedback_database.Role'
+// Added by developer
 grails.plugin.springsecurity.auth.loginFormUrl = '/login/index'
 grails.plugin.springsecurity.successHandler.alwaysUseDeault = true
 grails.plugin.springsecurity.successHandler.alwaysUseDeaultTargetUrl = true
@@ -7,9 +11,7 @@ grails.plugin.springsecurity.logout.alwaysUseDefaultTargetUrl=true
 grails.plugin.springsecurity.logout.afterLogoutUrl='/login/index'
 grails.plugin.springsecurity.failureHandler.defaultFailureUrl='/login/index?msg=Invalid Username or Password'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/login/getuser'
-grails.plugin.springsecurity.userLookup.userDomainClassName = 'feedback_database.User'
-grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'feedback_database.UserRole'
-grails.plugin.springsecurity.authority.className = 'feedback_database.Role'
+
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 		[pattern: '/',               access: ['permitAll']],
 		[pattern: '/error',          access: ['permitAll']],
@@ -38,6 +40,7 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 		[pattern: '/**/favicon.ico', filters: 'none'],
 		[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
+//Facebook OAuth Login Details
 oauth{
 	providers{
 		facebook{

@@ -63,3 +63,21 @@ td
 tr{
 	text-align:center;
 }
+.myStyle{
+width:1000px;
+
+}
+.myHead{
+font-weight:bold;
+font-size:15px;
+text-align: justify;
+text-justify: inter-word;
+align-content:center;
+}
+.myData{
+font-weight:italic;
+font-size:15px;
+text-align: justify;
+text-justify: inter-word;
+align-content:left;
+}

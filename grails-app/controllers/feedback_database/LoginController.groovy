@@ -1,25 +1,26 @@
 package feedback_database
 import grails.converters.JSON
 import uk.co.desirableobjects.oauth.scribe.OauthService
-import grails.plugin.springsecurity.annotation.Secured
 
 class LoginController {
+
     def springSecurityService
     String currentUser //to access in both the actions login and update
     String msg = "Please Login First"
     def feedback //defined here to store id for the user logged in
     FacebookLoginService facebookLoginService // Service class instance to call serviceMethod
     OauthService oauthService //to get the currently logged username
+    GetDataService getDataService
     def username
 
     def index() {
+        //Session Management
         username=null
         currentUser = null
-
     }
 
-    //Action to get the username form Facebook if login is successful
 
+    //Action to get the username form Facebook if login is successful
     def fbsuccess(){
         String sessionKey = oauthService.findSessionKeyForAccessToken('facebook')
         def token = session[sessionKey]
@@ -32,146 +33,67 @@ class LoginController {
         }
         else
             redirect(controller: 'login' , action: 'index')
-    }
+    }//fbsuccess closed
+
 
     //to be called when a user successfully logs in
     def getuser(){
-
         currentUser = springSecurityService.currentUser?.username
         redirect(controller: 'login' , action: 'home')
-
     }
 
-
-        def home() {
-            username = currentUser
-            feedback = Feedback.findByUserName(username)
-            if (feedback != null) {
-
-                String courseName
-                String instituteName
-                String trainerName
-                String courseDuration
-                String totalFees
-                String fb
-
-                if (username != null) {
-                    feedback = Feedback.findByUserName(username)
-                    if (feedback != null) {
-                        courseName = feedback.courseName
-                        instituteName = feedback.instituteName
-                        trainerName = feedback.trainerName
-                        courseDuration = feedback.courseDuration
-                        totalFees = feedback.totalFees
-                        fb = feedback.feedback
-
-                        def sendData = [
-                                courseName: courseName,
-                                instituteName: instituteName,
-                                trainerName: trainerName,
-                                courseDuration: courseDuration,
-                                totalFees: totalFees,
-                                feedback: fb
-                        ]
-
-                        [sendData: sendData]
-
-
-                    }//2nd If Close
-
-                }//1st If close
-
-                else{
-                    redirect(controller: 'login' , action: "index")
-
-                }
-
-
-            } else {
-                redirect(controller: "login", action: "addFeedback")
-            }
-        }
-
-
-
-    def update() {
+    //Homepage of Feedback database
+    def home() {
         username = currentUser
         feedback = Feedback.findByUserName(username)
-
-        if (feedback != null) {
-
-            String courseName
-            String instituteName
-            String trainerName
-            String courseDuration
-            String totalFees
-            String fb
-
-            if (username != null) {
-                feedback = Feedback.findByUserName(username)
-                if (feedback != null) {
-                    courseName = feedback.courseName
-                    instituteName = feedback.instituteName
-                    trainerName = feedback.trainerName
-                    courseDuration = feedback.courseDuration
-                    totalFees = feedback.totalFees
-                    fb = feedback.feedback
-
-                    def sendData = [
-                            courseName: courseName,
-                            instituteName: instituteName,
-                            trainerName: trainerName,
-                            courseDuration: courseDuration,
-                            totalFees: totalFees,
-                            feedback: fb
-                    ]
-
-                    [sendData: sendData]
-
-
-                }//2nd If Close
-
-            }//1st If close
-
-            else{
-                redirect(controller: 'login' , action: "index")
-
-            }
-
-
-        } else {
-            redirect(controller: "login", action: "addFeedback")
+        if(feedback!=null) {
+            username = currentUser
+            def sendData = getDataService.getData(username)
+            [sendData: sendData]
         }
-    }
+        else
+            redirect(controller: 'login' , action: 'addFeedback')
 
 
-    def updateData() {
+        }
+
+    //update action to update the feedback for the user
+    def update() {
         username = currentUser
         if(username!=null) {
-            feedback = Feedback.findByUserName(username)
-            feedback.courseName = params.courseName
-            feedback.instituteName = params.instituteName
-             feedback.trainerName = params.trainerName
-            feedback.courseDuration = params.courseDuration
-            feedback.totalFees = params.totalFees
-            feedback.feedback = params.fb
-            if (feedback.save()) {
-                username = null
-                redirect(controller: "login", action: "home")
-            } else {
-                redirect(controller: "login", action: "index")
-            }
+            def sendData = getDataService.getData(username)
+            [sendData: sendData]
+        }
+        else
+            redirect(controller: 'login' , action: 'index',params:[msg:msg])
+
+    }
+
+    //Called when user click on Update
+    def updateData() {
+        def checkUpdate = getDataService.update(username,
+                params.courseName,
+                params.instituteName,
+                params.trainerName,
+                params.courseDuration,
+                params.totalFees,
+                params.fb)
+
+        if(checkUpdate) {
+            redirect(controller: 'login', action: 'home')
         }
         else
             redirect(controller: "login", action: "index", params:[msg:msg])
     }
 
+    //Deletes the Feedback
     def deleteFeedback() {
         username = currentUser
         if(username!=null) {
             def del = Feedback.findByUserName(username)
             if (del.delete()) {
-                render("Deleted")
+                redirect(controller: "login", action: "index", params:[msg:msg])
+
             } else {
                 redirect(controller: "login", action: "addFeedback")
             }
@@ -179,6 +101,8 @@ class LoginController {
         else
             redirect(action: 'index')
     }
+
+    //Adds New Feedback
     def addFeedback() {
         username = currentUser
         if(username!=null)
@@ -189,4 +113,14 @@ class LoginController {
         else
             redirect(action: 'index' , params: [msg:msg])
     }
+
+    //Saving the new Feedback Added
+    def saveFeedback() {
+
+        def saveFB = new Feedback(params)
+        if (saveFB.save()) {
+            redirect(controller: "login", action: "home")
+        }
+    }
+
 }//Controller Close
