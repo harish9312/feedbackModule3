@@ -18,10 +18,13 @@ fieldset.newborder {
     border-radius: 20px;
 
 }
-.btn-success-singup,  .btn-success-singup:active, .btn-success-singup:focus {
-    background-color: #9900CC;
-    border-radius: 20px;
-    color:#FFFFFF;
+
+
+.btn-success,  .btn-success:active, .btn-success:focus {
+    background-color: #6666FF;
+    border-radius: 15px;
+    width: 200px;
+    height: 50px;
 }
 
 .btn-success:hover
@@ -30,13 +33,6 @@ fieldset.newborder {
     border-radius: 10px;
     color:#FFFFFF;
 }
-.btn-success-singup:hover
-{
-    background-color: #669900;
-    border-radius: 10px;
-    color:#FFFFFF;
-}
-
 .form-control:focus {
   border-color: #8064A2;
    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(186,85,211,0.6);
@@ -54,15 +50,6 @@ fieldset.newborder {
 }	
 
 
-td
-{
-	padding-bottom: 20px;
-	padding-right: 10px;
-	padding-left: 10px;
-}
-tr{
-	text-align:center;
-}
 .myStyle{
 width:1000px;
 

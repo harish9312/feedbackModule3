@@ -1,73 +1,136 @@
 <!DOCTYPE html>
 <html>
-	<head>
-    <title>Login To FeedBack Database</title>
-    <asset:stylesheet src="font-awesome/css/font-awesome.css"/>
-    <asset:stylesheet src="bootstrap.css"/>
-    <asset:stylesheet src="customcss2.css"/>
-    <asset:stylesheet src="loginDesign.css"/>
-    <asset:javascript src="angular.min.js"/>
-    <asset:javascript src="jquery.js"/>
-    <asset:javascript src="bootstrap.js"/>
+<head>
+    <link rel="icon" href="http://www.freeiconspng.com/uploads/open-book-icon-free-books-and-education-13.png" type="image/gif" sizes="16x16">
+	<title>Welcome To Feedback Database</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <asset:stylesheet src="font-awesome/css/font-awesome.css"/>
+        <asset:stylesheet src="myHomeStyle.css" />
+        <asset:stylesheet src="customcss2.css"/>
+        <asset:javascript src="validation.js"/>
+
+    <style type="text/css">
+    	body{
+		color: #FFFFFF;
+		background-image:url('${resource(dir: "images/", file: "bg.jpg")}');
+        }
+    </style>
+
+
+    <g:javascript>
+    </g:javascript>
 </head>
+<body onLoad="hideForm();">
+<div class="container">
+<hr>
+<h2>Welcome To Feedback Database</h2>
+<hr>
+		<table border="0px" align="center" width="90%">
+		<tr>
+		<td>
+		<div id="loginForm">
+		<fieldset class="scheduler-border">
+        		<h3>Login</h3>
+        		<hr>
+ 			<g:if test='${params.checkUser}'>
+        		<div class="alert alert-success">
+                  <strong><i class="fa fa-check" aria-hidden="true"></i>Congrats</strong> your account has been created..!!
+                  <br>Please Login to continue..!!
+                </div>
+             </g:if>
 
-<body  ng-app="feedbackDatabaseApp">
-
-<nav class="navbar navbar-default" style="background-color:#CC33CC">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-    <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="../" class="navbar-brand" style="color:#FFFFFF" font-size="10">
-Feedback Database</a>
-</div>
-<div id="navbar" class="navbar-collapse collapse">
-    <ul class="nav navbar-nav navbar-right" >
-
-    <li><g:link controller="register" action="index" style="color:#FFFFFF">SignUp Here</g:link></li>
-		<li><g:link controller="feedback" action="index" style="color:#FFFFFF">View Feedback</g:link></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-
-</div>
-<center>
-	<g:if test='${flash.message}'>
-			<div class="login_message">${flash.message}</div>
+	<g:if test='${params.loginCheck}'>
+	       	<div class="alert alert-danger">
+	        <strong><i class="fa fa-close" aria-hidden="true"></i>Ooopps..!!</strong> please login again..!!
+             </div>
+</g:if>
+	<g:if test='${params.msg}'>
+	       	<div class="alert alert-danger">
+	        <strong><i class="fa fa-close" aria-hidden="true"></i>${params.msg}</strong>
+             </div>
 		</g:if>
-<form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
-<table align="center" width="50%">
-    <table align="center" width="50%">
-        <tr><td>
-            <fieldset class="newborder">
-                    <h2 align="center">Login To Feedback Database</h2>
-                        <g:if test="${params.msg}"><p class="alert alert-danger">${params.msg}</g:if></p><br>
-                            <table align="center" width="270px">
-                        <tr><td><i class="fa fa-2x fa-user-o" aria-hidden="true"></td><td><g:textField required="false" class="form-control" name="${usernameParameter ?: 'username'}" id="username" placeholder="Enter Your Username" value="${userInstance?.userName}"/></td></tr></i>
-                        <tr><td><i class="fa fa-3x fa-lock" aria-hidden="true"></td><td><g:field required="true" class="form-control" type="password" name="${passwordParameter ?: 'password'}" id="password" placeholder="Enter Your Password" value="${userInstance?.password}"/></td></tr>
-                        <tr><td><td><p><g:submitButton class="btn btn-lg btn-success btn-block" name="login"  value="Login" /><p>
-        </tr></td>
-
-</td></tr>
-</form>
-</table>
-
-
-
-
-
-<h6>OR</h6>
-<oauth:connect provider="facebook" id="facebook-connect-link">
+        <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
+		<table border="0px" align="center" class="myTable" width="80%">
+			<tr>
+			<td><i class="fa fa-2x fa-user-o" align="right" aria-hidden="true"></td><td><g:textField type="text" placeholder="Enter Your Username" name="username" class="form-control" /></td>
+			</tr>
+			<tr>
+			<td><i class="fa fa-2x fa-lock" align="right" aria-hidden="true"></td><td><g:field type="password" placeholder="Enter Your Password" name="password" class="form-control" /></td>
+			</tr>
+			<tr>
+			<td>
+			</td>
+			<td>
+			<input type="submit" name="" value="Login" class="btn btn-success btn-lg">
+			</td>
+			</tr>
+		</table>
+		</form>
+			<p align="center" style="font-size: 20px; font-family: 'Times New Roman';">OR</p>
 <center>
-<asset:image class="img-responsive" width="300px" height="20px" src="fblogin.png"/>
-</oauth:connect>
-    </table>
+    <oauth:connect provider="facebook" id="facebook-connect-link">
+        <asset:image class="img-responsive fbConnect" width="300px" height="20px" src="fblogin.png"/>
+    </oauth:connect>
+</center>
 
+ 	</fieldset>
+ 	<p align="center" style="font-size: 20px; font-color:#ffffff; font-family: 'Times New Roman';">Not a member yet?..<a  style="cursor:pointer;" onclick=showHide(1);>SingUp</a></p>
 </div>
-</body>
+</td>
+<td>
+<div id="signupForm">
+<fieldset class="scheduler-border">
+		<h3>SignUp  </h3>
+		<hr>
+
+<g:form name="myForm" controller="register"  action="addUser">
+		<table border="0px" align="center" class="myTable" width="80%">
+			<tr>
+			<td><i class="fa fa-2x fa-user-o" align="right" aria-hidden="true"></td><td><g:textField placeholder="Enter Your Username" name="userName" class="form-control" /></td>
+			</tr>
+			<tr>
+            <td><i class="fa fa-2x fa-user-circle-o" align="right" aria-hidden="true"></td><td><g:textField placeholder="Enter Your Full Name" name="fullName" class="form-control" /></td>
+            </tr>
+			<tr>
+			<td><i class="fa fa-2x fa-lock" align="right" aria-hidden="true"></td><td><g:field type="password" name="password" placeholder="Enter Your Password" id="newPassword" class="form-control" /></td>
+			</tr>
+			<tr>
+			<td><i class="fa fa-2x fa-lock" align="right" aria-hidden="true"></td><td><g:field id="confirmPassword"  onChange="checkPasswordMatch();" required="true" class="form-control" type="password" name="confirmPassword" placeholder="Enter Your Password Again" value="${userInstance?.password}"/>
+            <span id="checkPassword"></span></td>
+            </tr>
+			<tr>
+			<td>
+			</td>
+			<td>
+<g:submitButton onclick="return validatePasswordField()" class="btn btn-lg btn-success" name="register"  value="Register" />			</td>
+			</tr>
+		</table>
+ 	</fieldset>
+ 	</g:form>
+ 	 	<p align="center" style="font-size: 20px; font-color:#ffffff; font-family: 'Times New Roman';">Back to Login Form<a  style="cursor:pointer;" onclick=showLogin();>...Login</a></p>
+
+</td>
+<td>
+    <div class="hidden-xs">
+		<fieldset class="scheduler-border">
+		<p class="myHeader">New To The Feedback Database Want to see previously added feedbacks..??..</p>
+		<br>
+		<h4><g:link controller="feedback" action="index">View Feedbacks</g:link>
+        </fieldset>
+    </div>
+</td>
+</tr>
+</table>
+    <div class="hidden-lg">
+		<fieldset class="scheduler-border">
+		<p class="myHeader">New To The Feedback Database Want to see previously added feedbacks..??..</p>
+		<br>
+		<h4><g:link controller="feedback" action="index">View Feedbacks</g:link>
+        </fieldset>
+    </div>
+
+    </body>
 </html>

@@ -65,7 +65,7 @@ class LoginController {
             [sendData: sendData]
         }
         else
-            redirect(controller: 'login' , action: 'index',params:[msg:msg])
+            redirect(controller: 'login' , action: 'index',params:[loginCheck: 1])
 
     }
 
@@ -83,7 +83,7 @@ class LoginController {
             redirect(controller: 'login', action: 'home')
         }
         else
-            redirect(controller: "login", action: "index", params:[msg:msg])
+            redirect(controller: "login", action: "index", params:[loginCheck:1])
     }
 
     //Deletes the Feedback
@@ -92,7 +92,7 @@ class LoginController {
         if(username!=null) {
             def del = Feedback.findByUserName(username)
             if (del.delete()) {
-                redirect(controller: "login", action: "index", params:[msg:msg])
+                redirect(controller: "login", action: "index", params:[loginCheck: 1])
 
             } else {
                 redirect(controller: "login", action: "addFeedback")
@@ -105,22 +105,29 @@ class LoginController {
     //Adds New Feedback
     def addFeedback() {
         username = currentUser
-        if(username!=null)
-        {
-            def loggedUser = [username: username]
-            [loggedUser: loggedUser]
+        if (username != null) {
+
         }
         else
-            redirect(action: 'index' , params: [msg:msg])
+            redirect(action: 'index', params: [loginCheck: 1])
     }
-
     //Saving the new Feedback Added
     def saveFeedback() {
+        def saveFB = new Feedback(
+                userName: username,
+                courseName: params.courseName,
+                courseDuration: params.courseDuration,
+                trainerName: params.trainerName,
+                instituteName: params.instituteName,
+                feedback: params.feedback,
+                totalFees: params.totalFees,
+                rating:params.rating
 
-        def saveFB = new Feedback(params)
+        )
         if (saveFB.save()) {
             redirect(controller: "login", action: "home")
-        }
+        }else
+            render "Not Saved"
     }
 
 }//Controller Close

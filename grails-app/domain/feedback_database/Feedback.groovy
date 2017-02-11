@@ -10,6 +10,7 @@ class Feedback {
     String totalFees
     String feedback
     String userName
+    int rating
 
     static constraints = {
 

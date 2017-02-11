@@ -1,0 +1,45 @@
+td
+{
+	padding-bottom: 20px;
+	padding-right: 10px;
+	padding-left: 10px;
+	font-size: 20px;
+}
+@media only screen and (max-device-width:480px){
+td{
+	font-size:17px;
+}	
+}
+tr{
+	text-align:center;
+}
+
+
+			.myField{
+                         width: 70%;
+                         text-align: center;
+                         display: table;
+                         margin: 0 auto;
+                         margin-top: 80px;
+                     }
+
+                     .paragraph{
+                        font-size: 17px;
+                     }
+@media only screen and (max-device-width:480px){
+			.myField{
+                         width: 95%;
+                         text-align: center;
+                         display: table;
+                         margin: 0 auto;
+                         margin-top: 80px;
+                     }
+
+                    }
+                    body{
+                    		background-repeat: no-repeat;
+                    		background-position: center center;
+                    		background-attachment: fixed;
+                    		background-size: cover;
+                    		padding-bottom:50px;
+                    			}

@@ -14,6 +14,7 @@ class GetDataService {
         String courseDuration
         String totalFees
         String fb
+        int rating
 
         if (username != null) {
             feedback = Feedback.findByUserName(username)
@@ -23,6 +24,7 @@ class GetDataService {
                 trainerName = feedback.trainerName
                 courseDuration = feedback.courseDuration
                 totalFees = feedback.totalFees
+                rating = feedback.rating
                 fb = feedback.feedback
 
                 def sendData = [
@@ -31,6 +33,7 @@ class GetDataService {
                         trainerName   : trainerName,
                         courseDuration: courseDuration,
                         totalFees     : totalFees,
+                        rating        : rating,
                         feedback      : fb
                 ]
 

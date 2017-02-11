@@ -3,7 +3,7 @@ table {
     border-collapse:separate;
     border: 2px;
     border-radius:10px;
-	box-shadow:0 0 10px #000000;
+	box-shadow:0 0 50px #000000;
 	font-size: 1.2em;
 	font-family: 'Times New Roman';
     -moz-border-radius:10px;
@@ -13,12 +13,17 @@ td{
 	border-radius: 1px;
 	border:0.6px;
 	 cursor : pointer;
- 
+	padding-bottom: 20px;
+	padding-right: 10px;
+	padding-left: 10px;
 
+
+}
+tr{
 }
 
 th {
-    background-color: #0000CD;
+    background-color: #996633;
     color: white;
     text-align: center;
 }
@@ -37,6 +42,7 @@ th {
 
 .myStyle1{
     padding-bottom:10px;
+    color:#ffffff;
 }
 .myStyle{
     padding-top:10px;
@@ -46,6 +52,9 @@ th {
     font-weight:bold;
     margin-left:10px;
     padding-left:10px;
+}
+.myButton{
+widht:150px;
 }
 .myData{
     font-size:15px;
