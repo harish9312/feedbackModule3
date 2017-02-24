@@ -77,7 +77,7 @@
 </center>
 
  	</fieldset>
- 	<p align="center" style="font-size: 20px; font-color:#ffffff; font-family: 'Times New Roman';">Not a member yet?..<a  style="cursor:pointer;" onclick=showHide(1);>SingUp</a></p>
+ 	<p align="center" style="font-size: 20px; font-color:#ffffff; font-family: 'Times New Roman';">Not a member yet?..<a  style="cursor:pointer;" onclick=showHide(1);>SignUp</a></p>
 </div>
 </td>
 <td>
