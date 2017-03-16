@@ -4,7 +4,7 @@
     <link rel="icon" href="http://www.freeiconspng.com/uploads/open-book-icon-free-books-and-education-13.png" type="image/gif" sizes="16x16">
     <title>Feedbacks</title>
     <asset:javascript src="angular.min.js"/>
-    <asset:javascript src="jquery.js"/>
+    <asset:javascript src="jquery.min.js"/>
     <asset:javascript src="filterValidations.js" />
     <asset:javascript src="bootstrap.js"/>
     <asset:stylesheet src="customcss1.css"/>
