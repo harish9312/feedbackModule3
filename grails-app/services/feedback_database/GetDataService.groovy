@@ -6,8 +6,7 @@ import grails.transaction.Transactional
 class GetDataService {
     def feedback
 
-    def getData(String userName) {
-        String username = userName
+    def getData(String id) {
         String courseName
         String instituteName
         String trainerName
@@ -16,8 +15,8 @@ class GetDataService {
         String fb
         int rating
 
-        if (username != null) {
-            feedback = Feedback.findByUserName(username)
+
+            feedback = Feedback.findById(id)
             if (feedback != null) {
                 courseName = feedback.courseName
                 instituteName = feedback.instituteName
@@ -40,9 +39,9 @@ class GetDataService {
                 return sendData
             }
         }
-    }
 
-    def update(String username,
+
+    def update(String id,
                String courseName,
                String instituteName,
                String trainerName,
@@ -50,7 +49,7 @@ class GetDataService {
                String totalFees,
                String fb){
 
-        feedback = Feedback.findByUserName(username)
+        feedback = Feedback.findById(id)
         feedback.courseName = courseName
         feedback.instituteName = instituteName
         feedback.trainerName = trainerName

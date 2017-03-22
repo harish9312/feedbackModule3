@@ -9,14 +9,14 @@ import spock.lang.Specification
 @TestFor(LoginController)
 class LoginControllerSpec extends Specification {
 
-    def setup() {
-    }
+    void 'test addFeedback'(){
 
-    def cleanup() {
-    }
+        when:
+//        request.method='POST'
+        params.loginCheck = 1
+        controller.addFeedback()
 
-    void "test something"() {
-        expect:"fix me"
-            true == false
+        then:
+        response.redirectUrl == '/login/index?loginCheck=1'
     }
 }

@@ -5,7 +5,6 @@ class FeedbackController {
     def index() {
         //Using Current user to access the login state on feedback display page
         def currentUser = springSecurityService.currentUser?.username
-        def feedbacks = Feedback.executeQuery('from Feedback order by id desc')
         def fbCPP = Feedback.executeQuery("from Feedback where courseName = 'C++' order by id desc ")
         def fbJava = Feedback.executeQuery("from Feedback where courseName = 'Java' order by id desc ")
         def fbPython = Feedback.executeQuery("from Feedback where courseName = 'Python' order by id desc")
@@ -19,5 +18,10 @@ class FeedbackController {
          fbGrails:fbGrails,
          currentUser: currentUser]
 
+    }
+
+    def testing(){
+
+        [title:'HARISH']
     }
 }

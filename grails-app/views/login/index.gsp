@@ -35,6 +35,13 @@
 		<fieldset class="scheduler-border">
         		<h3>Login</h3>
         		<hr>
+        		<g:if test='${params.userCheck}'>
+                        		<div class="alert alert-danger">
+                                  <strong><i class="fa fa-close " aria-hidden="true"></i>Sorry..!!!</strong> you are not <strong>Authorized</strong> to edit that feedback..!
+                                  <br>Please Login again to continue..!!
+                                </div>
+                             </g:if>
+
  			<g:if test='${params.checkUser}'>
         		<div class="alert alert-success">
                   <strong><i class="fa fa-check" aria-hidden="true"></i>Congrats</strong> your account has been created..!!

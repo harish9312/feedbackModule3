@@ -12,7 +12,7 @@ class LoginController {
     OauthService oauthService //to get the currently logged username
     GetDataService getDataService
     def username
-
+    def id
     def index() {
         //Session Management
         username=null
@@ -24,10 +24,12 @@ class LoginController {
     def fbsuccess(){
         String sessionKey = oauthService.findSessionKeyForAccessToken('facebook')
         def token = session[sessionKey]
-        def new1 =facebookLoginService.serviceMethod(token)
-        def data = JSON.parse(new1)
-        //
-        currentUser = data.id
+        println(token)
+        def getUserID = facebookLoginService.serviceMethod(token)
+        println(getUserID)
+//        def new1 =facebookLoginService.serviceMethod(token)
+       def data = JSON.parse(getUserID)
+       currentUser = data.id
         if(currentUser){
             redirect(controller: 'login' , action: 'home')
         }
@@ -45,33 +47,42 @@ class LoginController {
     //Homepage of Feedback database
     def home() {
         username = currentUser
-        feedback = Feedback.findByUserName(username)
-        if(feedback!=null) {
-            username = currentUser
-            def sendData = getDataService.getData(username)
-            [sendData: sendData]
+        if(username!=null) {
+            def checkFeedback = Feedback.findByUserName(username)
+            if(checkFeedback) {
+                def sendData = Feedback.executeQuery("from Feedback where userName = '" + username + "' order by id desc ")
+                [sendData: sendData]
+            }
+            else
+                redirect(controller: 'login' , action: 'addFeedback')
         }
         else
-            redirect(controller: 'login' , action: 'addFeedback')
-
-
+            redirect(controller: 'login' , action: 'index' , params: [loginCheck: 1])
         }
 
-    //update action to update the feedback for the user
+
     def update() {
         username = currentUser
-        if(username!=null) {
-            def sendData = getDataService.getData(username)
-            [sendData: sendData]
+        id = params.id
+        def check = Feedback.findById(id)
+        if(username == check.userName) {
+            def sendData = getDataService.getData(id)
+//        def sendData = Feedback.executeQuery("from Feedback where id = '"+id+"'")
+
+            if (username != null) {
+                [sendData: sendData]
+            } else
+                redirect(controller: 'login', action: 'index', params: [loginCheck: 1])
         }
         else
-            redirect(controller: 'login' , action: 'index',params:[loginCheck: 1])
+            redirect(controller: 'login', action: 'index', params: [userCheck: 1])
 
     }
 
     //Called when user click on Update
     def updateData() {
-        def checkUpdate = getDataService.update(username,
+        println(id)
+        def checkUpdate = getDataService.update(id,
                 params.courseName,
                 params.instituteName,
                 params.trainerName,
