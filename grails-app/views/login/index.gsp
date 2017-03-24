@@ -84,7 +84,7 @@
 </center>
 
  	</fieldset>
- 	<p align="center" style="font-size: 20px; font-color:#ffffff; font-family: 'Times New Roman';">Not a member yet?..<a  style="cursor:pointer;" onclick=showHide(1);>SignUp</a></p>
+ 	<p align="center" style="font-size: 20px; color:#000000; font-family: 'Times New Roman';">Not a member yet?..<a  style="cursor:pointer;" onclick=showHide(1);>SignUp</a></p>
 </div>
 </td>
 <td>
@@ -93,7 +93,7 @@
 		<h3>SignUp  </h3>
 		<hr>
 
-<g:form name="myForm" controller="register"  action="addUser">
+<g:form name="myForm" controller="register"  action="addUser" method='POST'>
 		<table border="0px" align="center" class="myTable" width="80%">
 			<tr>
 			<td><i class="fa fa-2x fa-user-o" align="right" aria-hidden="true"></td><td><g:textField placeholder="Enter Your Username" name="userName" class="form-control" /></td>
@@ -112,12 +112,14 @@
 			<td>
 			</td>
 			<td>
-<g:submitButton onclick="return validatePasswordField()" class="btn btn-lg btn-success" name="register"  value="Register" />			</td>
+            <g:submitButton onclick="return validatePasswordField()" class="btn btn-lg btn-success" name="register"  value="Register" />
+            </td>
 			</tr>
 		</table>
  	</fieldset>
  	</g:form>
- 	 	<p align="center" style="font-size: 20px; font-color:#ffffff; font-family: 'Times New Roman';">Back to Login Form<a  style="cursor:pointer;" onclick=showLogin();>...Login</a></p>
+ 	<br>
+ 	 	<p align="center" style="font-size: 20px; color:#000000; font-family: 'Times New Roman';">Back to <a  style="cursor:pointer;" onclick=showLogin();>Login</a> Form</p>
 
 </td>
 <td>
@@ -125,7 +127,7 @@
 		<fieldset class="scheduler-border">
 		<p class="myHeader">New To The Feedback Database Want to see previously added feedbacks..??..</p>
 		<br>
-		<h4><g:link controller="feedback" action="index">View Feedbacks</g:link>
+		<h4 align="center"><g:link controller="feedback" class="btn btn-info" action="index">View Feedbacks</g:link>
         </fieldset>
     </div>
 </td>
@@ -134,8 +136,7 @@
     <div class="hidden-lg">
 		<fieldset class="scheduler-border">
 		<p class="myHeader">New To The Feedback Database Want to see previously added feedbacks..??..</p>
-		<br>
-		<h4><g:link controller="feedback" action="index">View Feedbacks</g:link>
+		<h4 align="center"><g:link controller="feedback" class="btn btn-info" action="index">View Feedbacks</g:link>
         </fieldset>
     </div>
 

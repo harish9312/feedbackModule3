@@ -67,7 +67,7 @@ Feedback Database</a>
                             <tr><td>Trainer Name:</td><td>     <g:textField required="true" value="${sendData.trainerName}" class="form-control"  name="trainerName" /></td></tr>
                             <tr><td>Course Duration:</td><td>  <g:textField required="true"  value="${sendData.courseDuration}" class="form-control"  name="courseDuration" /></td></tr>
                             <tr><td>Total Fees:</td><td>       <input type="number" required="true" class="form-control" value="${sendData.totalFees}" name="totalFees" /></td></tr>
-                                                    <tr><td>Rating of Institute</td>
+                                               <tr><td>Rating of Institute</td>
                                                <td style="color: black;">
                                                <select class="form-control" name="rating">
                                                            <option selected="true">${sendData.rating}</option>
@@ -78,14 +78,13 @@ Feedback Database</a>
                                                            <option value="4">4</option>
                                                            <option value="5">5</option>
                                                </select>
-
                                                </td></tr>
-<tr><td>Feedback:  </td><td><g:textArea required="true" id="check" maxlength="1000" class="form-control" onChange="countCharacters();" value="${sendData.feedback}" name="fb" />
-                        </td></tr>
-                        <tr>
-                        <td></td>
-                        <td><p align="right" style="font-size: 15px;">{{1000-text.length+" Characters Left"}}</p></td><tr>
-                        <tr><td></td><td><g:submitButton name="addFeedback" class="btn btn-lg btn-success btn-block" value="Add Feedback" /></td></tr>
+                                               <tr><td>Feedback: </td>
+                                               <td><g:textArea id="check" value="${sendData.feedback}" onChange="countCharacter();" required="true"  class="form-control" name="fb" /></td></tr>
+                                                <tr>
+                                                <td></td>
+                                                <td><p id="para" align="right" style="font-size: 15px;">{{1000-text.length+" Characters Left"}}</p></td><tr>
+                        <tr><td></td><td><g:submitButton name="addFeedback" class="btn btn-lg btn-success btn-block" value="Update Feedback" /></td></tr>
             </fieldset>
         </td></tr>
     </table>

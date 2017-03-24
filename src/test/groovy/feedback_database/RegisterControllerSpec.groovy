@@ -11,6 +11,11 @@ class RegisterControllerSpec extends Specification {
 
     void 'test addUser'(){
 
+    given:
+        params.username='newuser'
+        params.password='12341234'
+        params.fullname = 'SoniHArish'
+
     when:
         request.method='POST'
         params.checkUser= 1

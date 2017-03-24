@@ -1,6 +1,5 @@
 
 function filterFunction() {
-
   var input, tdValue, table, tr, td, i, tableLength,highest;
     input = document.getElementById("mySelectForSort");
   	table = document.getElementById("myTable");
@@ -18,18 +17,18 @@ function bubbleSort(table,tr, inputValue){
 	var tdValue,i=0,td,j;
 	var courseName, instRating, instName, totFee, dur, fb, trainerName;
 	var priceValue;
-	var rating = tr[3].getElementsByTagName("td")[6].innerHTML;
-    var cutRating, cutRating1;
+	var cutRating, cutRating1;
     var rating1, rating;
     var fee1, fee;
 	var trValue, trValue1;
     tableLength = tr.length;
+
     for(i = 0 ; i < tableLength; i++){
   		for(j = 2; j < (tableLength-i); j++){
   			if(inputValue === "lowToHigh" || inputValue == "highToLow")
   			{
 		  			fee = tr[j-1].getElementsByTagName("td")[4].innerHTML;
-                    trValue = parseInt(fee)
+                    trValue = parseInt(fee);
 
 
 		  			fee1 = tr[j].getElementsByTagName("td")[4].innerHTML;

@@ -46,11 +46,18 @@ $(document).ready(function () {
 
 function validatePasswordField(){
     x=document.myForm
+    var newPwd = document.getElementById('newPassword').value;
+    var confPwd = document.getElementById('confirmPassword').value;
     input=x.password.value
     if (input.length<8){
-        alert("Password is Too Short \n It Must Contain More Than 8 Characters")
+        alert("Password is Too Short \n It Must Contain at Least 8 Characters")
         return false
-    }else {
+    }
+    else if(newPwd != confPwd){
+    alert("Passwords Do Not Match..!! Please check...!!!")
+        return false
+    }
+    else{
         return true
     }
 }

@@ -56,6 +56,7 @@ class GetDataService {
         feedback.courseDuration = courseDuration
         feedback.totalFees = totalFees
         feedback.feedback = fb
+        println(feedback.feedback)
         if (feedback.save()) {
             return true
         } else {

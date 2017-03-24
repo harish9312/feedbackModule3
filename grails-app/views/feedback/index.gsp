@@ -89,8 +89,8 @@ SignUp Here</g:link></li>
 <p align="right">&nbsp;<input type="text" class="myInput" id="myInput" onkeyup="myFunction()" placeholder="Search for Course.." title="Type in a Course name"><i id= "filtersubmit" class="fa fa-2x fa-search" aria-hidden="true"></i></p>
 <div class="hidden-xs">
     <table class="newcorners table table-responsive" id="myTable" align="center">
+     <thead>
         <tr class="bg-success hidden-xs" align="center">
-
             <th>Course Name</th>
             <th>Institute Name</th>
             <th>Trainer Name</th>

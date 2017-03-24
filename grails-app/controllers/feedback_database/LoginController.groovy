@@ -20,7 +20,7 @@ class LoginController {
     }
 
 
-    //Action to get the username form Facebook if login is successful
+    //Action to get the username from Facebook if login is successful
     def fbsuccess(){
         String sessionKey = oauthService.findSessionKeyForAccessToken('facebook')
         def token = session[sessionKey]
@@ -28,8 +28,8 @@ class LoginController {
         def getUserID = facebookLoginService.serviceMethod(token)
         println(getUserID)
 //        def new1 =facebookLoginService.serviceMethod(token)
-       def data = JSON.parse(getUserID)
-       currentUser = data.id
+        def data = JSON.parse(getUserID)
+        currentUser = data.id
         if(currentUser){
             redirect(controller: 'login' , action: 'home')
         }
@@ -39,11 +39,10 @@ class LoginController {
 
 
     //to be called when a user successfully logs in
-    def getuser(){
+    def getuser() {
         currentUser = springSecurityService.currentUser?.username
-        redirect(controller: 'login' , action: 'home')
+        redirect(controller: 'login', action: 'home')
     }
-
     //Homepage of Feedback database
     def home() {
         username = currentUser
@@ -51,7 +50,7 @@ class LoginController {
             def checkFeedback = Feedback.findByUserName(username)
             if(checkFeedback) {
                 def sendData = Feedback.executeQuery("from Feedback where userName = '" + username + "' order by id desc ")
-                [sendData: sendData]
+                [sendData: sendData, userName: username]
             }
             else
                 redirect(controller: 'login' , action: 'addFeedback')
@@ -64,7 +63,7 @@ class LoginController {
     def update() {
         username = currentUser
         id = params.id
-        def check = Feedback.findById(id)
+        def check = feedback_database.Feedback.findById(id)
         if(username == check.userName) {
             def sendData = getDataService.getData(id)
 //        def sendData = Feedback.executeQuery("from Feedback where id = '"+id+"'")
@@ -81,7 +80,6 @@ class LoginController {
 
     //Called when user click on Update
     def updateData() {
-        println(id)
         def checkUpdate = getDataService.update(id,
                 params.courseName,
                 params.instituteName,
@@ -106,11 +104,11 @@ class LoginController {
                 redirect(controller: "login", action: "index", params:[loginCheck: 1])
 
             } else {
-                redirect(controller: "login", action: "addFeedback")
+                redirect(controller: "login", action: "home")
             }
         }
         else
-            redirect(action: 'index')
+            redirect(controller: 'login',  action: 'index')
     }
 
     //Adds New Feedback
