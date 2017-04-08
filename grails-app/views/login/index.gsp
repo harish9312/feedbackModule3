@@ -54,9 +54,9 @@
 	        <strong><i class="fa fa-close" aria-hidden="true"></i>Ooopps..!!</strong> please login again..!!
              </div>
 </g:if>
-	<g:if test='${params.msg}'>
+	<g:if test='${params.loginFailed}'>
 	       	<div class="alert alert-danger">
-	        <strong><i class="fa fa-close" aria-hidden="true"></i>${params.msg}</strong>
+	        <strong><i class="fa fa-close" aria-hidden="true"></i>Invalid Username OR Password</strong>
              </div>
 		</g:if>
         <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
