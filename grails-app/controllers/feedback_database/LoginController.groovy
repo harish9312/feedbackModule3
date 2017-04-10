@@ -21,17 +21,12 @@ class LoginController {
 
     //Action to get the username from Facebook if login is successful
     def fbsuccess(){
-        prinln(0)
         String sessionKey = oauthService.findSessionKeyForAccessToken('facebook')
-        println(1)
         def token = session[sessionKey]
-        println(2)
         def getUserID = facebookLoginService.serviceMethod(token)
-        println(3)
         def data = JSON.parse(getUserID)
         currentUser = data.id
         if(currentUser){
-            println("HEllos")
             redirect(controller: 'login' , action: 'home')
         }
         else

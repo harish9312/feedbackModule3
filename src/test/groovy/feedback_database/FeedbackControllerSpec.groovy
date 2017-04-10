@@ -6,13 +6,10 @@ import spock.lang.Specification
 @TestFor(FeedbackController)
 class FeedbackControllerSpec extends Specification {
 
-    void 'test index'(){
-        when:
-        def model = controller.index()
 
-        then:
-        model.fbCPP == Feedback.feedback
+    def setup() {
     }
 
-
+    def cleanup() {
+    }
 }

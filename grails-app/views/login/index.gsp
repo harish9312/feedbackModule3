@@ -62,10 +62,10 @@
         <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
 		<table border="0px" align="center" class="myTable" width="80%">
 			<tr>
-			<td><i class="fa fa-2x fa-user-o" align="right" aria-hidden="true"></td><td><g:textField type="text" placeholder="Enter Your Username" name="username" class="form-control" /></td>
+			<td><i class="fa fa-2x fa-user-o" align="right" aria-hidden="true"></td><td><g:textField type="text" required="true" placeholder="Enter Your Username" name="username" class="form-control" /></td>
 			</tr>
 			<tr>
-			<td><i class="fa fa-2x fa-lock" align="right" aria-hidden="true"></td><td><g:field type="password" placeholder="Enter Your Password" name="password" class="form-control" /></td>
+			<td><i class="fa fa-2x fa-lock" align="right" aria-hidden="true"></td><td><g:field type="password" required="true" placeholder="Enter Your Password" name="password" class="form-control" /></td>
 			</tr>
 			<tr>
 			<td>
