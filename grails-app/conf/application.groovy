@@ -9,7 +9,7 @@ grails.plugin.springsecurity.successHandler.alwaysUseDeaultTargetUrl = true
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.logout.alwaysUseDefaultTargetUrl=true
 grails.plugin.springsecurity.logout.afterLogoutUrl='/login/index'
-grails.plugin.springsecurity.failureHandler.defaultFailureUrl='/login/index?msg=Invalid Username or Password'
+grails.plugin.springsecurity.failureHandler.defaultFailureUrl='/login/index?loginFailed=1'
 grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/login/getuser'
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [

@@ -47,17 +47,21 @@ class GetDataService {
                String trainerName,
                String courseDuration,
                String totalFees,
-               String fb){
-
+               String fb,
+               String rating){
+        int fee = Integer.parseInt(totalFees)
+        int ratingInt = Integer.parseInt(rating)
         feedback = Feedback.findById(id)
         feedback.courseName = courseName
         feedback.instituteName = instituteName
         feedback.trainerName = trainerName
         feedback.courseDuration = courseDuration
-        feedback.totalFees = totalFees
+        feedback.totalFees = fee
         feedback.feedback = fb
-        println(feedback.feedback)
+        feedback.rating = ratingInt
+
         if (feedback.save()) {
+
             return true
         } else {
             return false

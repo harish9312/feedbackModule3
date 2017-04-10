@@ -38,6 +38,8 @@ Feedback Database</a>
 <div id="navbar" class="navbar-collapse collapse">          
             
 <ul class="nav navbar-nav navbar-right" >
+
+		<li><g:link controller="login" action="home" style="color:#FFFFFF"><i class="fa  fa-home" aria-hidden="true"></i> Home</g:link></li>
         <li><g:link controller="login" action="deleteFeedback" onclick="return confirmDelete()" style="color:#FFFFFF"><i class="fa fa-remove" aria-hidden="true"></i> Delete Your Feedback</g:link></li>
         <li><g:link method="POST" controller="logout" action="index" style="color:#FFFFFF"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</g:link></li>
 
@@ -57,6 +59,7 @@ Feedback Database</a>
                             <tr><td>Course Name:</td>      
                                 <td style="color: black;">      
                                 <select class="form-control" name="courseName">
+                                    <option selected="true">${sendData.courseName}</option>
                                     <option value="Java">Java</option>
                                     <option value="C++">C++</option>
                                     <option value="Grails">Grails</option>

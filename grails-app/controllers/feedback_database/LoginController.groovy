@@ -6,7 +6,6 @@ class LoginController {
 
     def springSecurityService
     String currentUser //to access in both the actions login and update
-    String msg = "Please Login First"
     def feedback //defined here to store id for the user logged in
     FacebookLoginService facebookLoginService // Service class instance to call serviceMethod
     OauthService oauthService //to get the currently logged username
@@ -22,15 +21,17 @@ class LoginController {
 
     //Action to get the username from Facebook if login is successful
     def fbsuccess(){
+        prinln(0)
         String sessionKey = oauthService.findSessionKeyForAccessToken('facebook')
+        println(1)
         def token = session[sessionKey]
-        println(token)
+        println(2)
         def getUserID = facebookLoginService.serviceMethod(token)
-        println(getUserID)
-//        def new1 =facebookLoginService.serviceMethod(token)
+        println(3)
         def data = JSON.parse(getUserID)
         currentUser = data.id
         if(currentUser){
+            println("HEllos")
             redirect(controller: 'login' , action: 'home')
         }
         else
@@ -63,16 +64,16 @@ class LoginController {
     def update() {
         username = currentUser
         id = params.id
-        def check = feedback_database.Feedback.findById(id)
-        if(username == check.userName) {
-            def sendData = getDataService.getData(id)
-//        def sendData = Feedback.executeQuery("from Feedback where id = '"+id+"'")
-
-            if (username != null) {
-                [sendData: sendData]
-            } else
-                redirect(controller: 'login', action: 'index', params: [loginCheck: 1])
-        }
+           if(username!=null) {
+           def check = Feedback.findById(id)
+           if (username == check.userName) {
+               def sendData = getDataService.getData(id)
+               if (username != null) {
+                   [sendData: sendData]
+               } else
+                   redirect(controller: 'login', action: 'index', params: [loginCheck: 1])
+           }
+       }
         else
             redirect(controller: 'login', action: 'index', params: [userCheck: 1])
 
@@ -80,16 +81,19 @@ class LoginController {
 
     //Called when user click on Update
     def updateData() {
-        def checkUpdate = getDataService.update(id,
-                params.courseName,
-                params.instituteName,
-                params.trainerName,
-                params.courseDuration,
-                params.totalFees,
-                params.fb)
+        if(request.method=='POST') {
+            def checkUpdate = getDataService.update(id,
+                    params.courseName,
+                    params.instituteName,
+                    params.trainerName,
+                    params.courseDuration,
+                    params.totalFees,
+                    params.fb,
+                    params.rating)
 
-        if(checkUpdate) {
-            redirect(controller: 'login', action: 'home')
+            if (checkUpdate) {
+                redirect(controller: 'login', action: 'home')
+            }
         }
         else
             redirect(controller: "login", action: "index", params:[loginCheck:1])
@@ -122,21 +126,26 @@ class LoginController {
     }
     //Saving the new Feedback Added
     def saveFeedback() {
-        def saveFB = new Feedback(
-                userName: username,
-                courseName: params.courseName,
-                courseDuration: params.courseDuration,
-                trainerName: params.trainerName,
-                instituteName: params.instituteName,
-                feedback: params.feedback,
-                totalFees: params.totalFees,
-                rating:params.rating
+        if (request.method == 'POST') {
+            def saveFB = new Feedback(
+                    userName: username,
+                    courseName: params.courseName,
+                    courseDuration: params.courseDuration,
+                    trainerName: params.trainerName,
+                    instituteName: params.instituteName,
+                    feedback: params.feedback,
+                    totalFees: params.totalFees,
+                    rating: params.rating
 
-        )
-        if (saveFB.save()) {
-            redirect(controller: "login", action: "home")
-        }else
-            render "Not Saved"
+            )
+            if (saveFB.save()) {
+                redirect(controller: "login", action: "home")
+            } else
+                render "Not Saved"
+        }
+        else
+            redirect(controller: "login", action: "index")
+
     }
 
 }//Controller Close

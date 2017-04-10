@@ -20,8 +20,5 @@ class FeedbackController {
 
     }
 
-    def testing(){
 
-        [title:'HARISH']
-    }
 }

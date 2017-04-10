@@ -46,6 +46,7 @@ Feedback Database</a>
 <div id="navbar" class="navbar-collapse collapse">          
             
 <ul class="nav navbar-nav navbar-right" >    
+		<li><g:link controller="login" action="home" style="color:#FFFFFF"><i class="fa  fa-home" aria-hidden="true"></i> Home</g:link></li>
 		<li><g:link controller="logout" style="color:#FFFFFF"><i class="fa  fa-sign-out" aria-hidden="true"></i> Logout</g:link></li>
 		        </ul>
           </div><!--/.nav-collapse -->
@@ -58,8 +59,8 @@ Feedback Database</a>
 
         <tr><td>
             <fieldset class="newborder" class="myField">
-                <h2 align="center">Add Your Feedback</h2>
-                             <h4>No Feedback Added Yet..!!</h4>
+                <h2 align="center" style="font-family:'Times New Roman'; font-size:40px;">Add Your Feedback</h2>
+                <br><br>
                     <table  align="center" class="col-lg-11">
                         <tr><td>Course Name:</td>
                         <td style="color: black;">      
@@ -75,7 +76,7 @@ Feedback Database</a>
                         <tr><td>Institute Name:</td><td>   <g:textField required="true" class="form-control"  name="instituteName" /></td></tr>
                         <tr><td>Trainer Name:</td><td>     <g:textField required="true" class="form-control"  name="trainerName" /></td></tr>
                             <tr><td>Course Duration:</td><td>  <g:field type="calendar" required="true" class="form-control"  name="courseDuration" /></td></tr>
-                        <tr><td>Total Fees:</td><td>       <g:textField required="true" type="number" class="form-control"  name="totalFees" /></td></tr>
+                        <tr><td>Total Fees:</td><td>       <input required="true" type="number" class="form-control"  name="totalFees" /></td></tr>
                         <tr><td>Rating of Institute</td>
                                                <td style="color: black;">
                                                <select class="form-control" name="rating">
